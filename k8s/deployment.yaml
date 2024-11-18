@@ -18,6 +18,6 @@ spec:
           limits:
             memory: "64Mi"
             cpu: "100m"
-        envFrom:
-        - configMapRef:
-            name: rabbitmq-loki-forwarder
+          envFrom:
+          - configMapRef:
+              name: rabbitmq-loki-forwarder
