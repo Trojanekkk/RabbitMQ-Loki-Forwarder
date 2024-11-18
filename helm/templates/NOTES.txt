@@ -1,0 +1,1 @@
+Application doesn't expose any port. However, you can make sure the app is working correctly by checking logs of the Pod in the cluster.

@@ -48,4 +48,22 @@ kubectl apply -f path/to/configmap/configmap.yaml
 
 ### Kubernetes (helm)
 
-Not yet available
+To install the app with Helm, clone the repository to your local filesystem. Go to the `helm` directory and generate Helm package:
+
+```
+helm package .
+```
+
+The command will produce `rabbitmq-loki-forwarder-1.0.0.tgz` file. Now, you can install it on the cluster:
+
+```
+helm install rabbitmq-loki-forwarder rabbitmq-loki-forwarder-1.0.0.tgz
+```
+
+It will install the app in the default namespace. Use standard Helm's switches to modify it accordingly.
+
+For almost 100% you will want to configure the app to make it work within your environment. To modify the default behaviour modify `helm/values.yaml` file. For detailed description check-out Docker usage (above). Then install the app with Helm command:
+
+```
+helm install rabbitmq-loki-forwarder rabbitmq-loki-forwarder-1.0.0.tgz -f values.yaml
+```

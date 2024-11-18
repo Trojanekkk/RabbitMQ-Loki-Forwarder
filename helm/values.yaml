@@ -1,0 +1,41 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/trojanekkk/rabbitmq-loki-forwarder
+  pullPolicy: IfNotPresent
+  tag: ""
+
+env:
+  - name: FORWARDER_LOKI_HOST
+    value: loki
+  - name: FORWARDER_LOKI_PORT
+    value: "3100"
+  - name: FORWARDER_RABBITMQ_HOST
+    value: rabbitmq
+  - name: FORWARDER_RABBITMQ_PORT
+    value: "5672"
+  - name: FORWARDER_RABBITMQ_USERNAME
+    value: user
+  - name: FORWARDER_RABBITMQ_PASSWORD
+    value: user
+  - name: FORWARDER_RABBITMQ_QUEUE
+    value: event_queue
+  - name: FORWARDER_APPLICATION_NAME
+    value: rabbitmq-loki-forwarder
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+podLabels: {}
+
+resources: 
+  limits:
+    cpu: 100m
+    memory: 64Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
