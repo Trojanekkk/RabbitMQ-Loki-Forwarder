@@ -1,9 +1,11 @@
 # rabbitmq-loki-forwarder
-A simple Python script / app for pushing internal RabbitMQ messages fromS queue to the Loki instance.
+A simple Python script / app for pushing internal RabbitMQ messages from queue to the Loki instance.
 
 For more details look for _Event Exchange Plugin_.
 
 ## Usage
+
+### Docker
 
 Run the app in the docker container with the default setup:
 
@@ -27,3 +29,23 @@ For example:
 ```
 docker run -d -e FORWARDER_LOKI_HOST=192.168.1.1 -e FORWARDER_LOKI_PORT=4321 ghcr.io/trojanekkk/rabbitmq-loki-forwarder:1.1.0
 ```
+
+### Kubernetes (kubectl)
+
+Run the app in the kubernetes cluster with the default setup:
+
+```
+kubectl apply -f https://raw.githubusercontent.com/Trojanekkk/RabbitMQ-Loki-Forwarder/refs/heads/main/k8s/deployment.yaml
+kubectl apply -f https://raw.githubusercontent.com/Trojanekkk/RabbitMQ-Loki-Forwarder/refs/heads/main/k8s/configmap.yaml
+```
+
+For almost 100% you will want to configure the app to make it work within your environment. To modify the default behaviour clone or copy `k8s/configmap.yaml` file to your local filesystem, and modify the values accordingly. For detailed description check-out Docker usage (above). Then apply the configmap to your kubernetes cluster.
+
+```
+kubectl apply -f https://raw.githubusercontent.com/Trojanekkk/RabbitMQ-Loki-Forwarder/refs/heads/main/k8s/deployment.yaml
+kubectl apply -f path/to/configmap/configmap.yaml
+```
+
+### Kubernetes (helm)
+
+Not yet available
