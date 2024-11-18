@@ -40,11 +40,11 @@ if __name__ == '__main__':
     forwarder = Forwarder(
         loki_host=os.getenv('FORWARDER_LOKI_HOST', 'localhost'),
         loki_port=os.getenv('FORWARDER_LOKI_PORT', '3100'),
-        rabbit_host=os.getenv('FORWARDER_RABBIT_HOST', 'localhost'),
-        rabbit_port=os.getenv('FORWARDER_RABBIT_PORT', '5672'),
-        rabbit_username=os.getenv('FORWARDER_RABBIT_USERNAME', 'admin'),
-        rabbit_password=os.getenv('FORWARDER_RABBIT_PASSWORD', 'admin'),
-        rabbit_event_queue=os.getenv('FORWARDER_RABBIT_QUEUE', 'event_queue'),
+        rabbit_host=os.getenv('FORWARDER_RABBITMQ_HOST', 'localhost'),
+        rabbit_port=os.getenv('FORWARDER_RABBITMQ_PORT', '5672'),
+        rabbit_username=os.getenv('FORWARDER_RABBITMQ_USERNAME', 'guest'),
+        rabbit_password=os.getenv('FORWARDER_RABBITMQ_PASSWORD', 'guest'),
+        rabbit_event_queue=os.getenv('FORWARDER_RABBITMQ_QUEUE', 'event_queue'),
         application_name=os.getenv('FORWARDER_APPLICATION_NAME', 'rabbitmq-loki-forwarder')
     )
     forwarder.start()

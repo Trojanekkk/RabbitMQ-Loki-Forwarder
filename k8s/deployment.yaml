@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-loki-forwarder
+spec:
+  selector:
+    matchLabels:
+      app: rabbitmq-loki-forwarder
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-loki-forwarder
+    spec:
+      containers:
+      - name: rabbitmq-loki-forwarder
+        image: ghcr.io/trojanekkk/rabbitmq-loki-forwarder:1.1.0
+        resources:
+          limits:
+            memory: "64Mi"
+            cpu: "100m"
+        envFrom:
+        - configMapRef:
+            name: rabbitmq-loki-forwarder

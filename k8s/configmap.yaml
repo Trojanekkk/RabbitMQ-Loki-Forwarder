@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-loki-forwarder
+data:
+  FORWARDER_LOKI_HOST: loki
+  FORWARDER_LOKI_PORT: "3100"
+  FORWARDER_RABBITMQ_HOST: rabbitmq
+  FORWARDER_RABBITMQ_PORT: "5672"
+  FORWARDER_RABBITMQ_USERNAME: guest
+  FORWARDER_RABBITMQ_PASSWORD: guest
+  FORWARDER_RABBITMQ_QUEUE: event_queue
+  FORWARDER_APPLICATION_NAME: rabbitmq-loki-forwarder
+
