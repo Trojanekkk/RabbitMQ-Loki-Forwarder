@@ -26,8 +26,14 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.envSecretName }}
+          envFrom:
+            - secretRef:
+                name: {{ .Values.envSecretName }}
+          {{- else }}
           env:
             {{- toYaml .Values.env | nindent 12 }}
+          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

@@ -23,6 +23,8 @@ env:
   - name: FORWARDER_APPLICATION_NAME
     value: rabbitmq-loki-forwarder
 
+envSecretName: ""
+
 nameOverride: ""
 fullnameOverride: ""
 
@@ -33,6 +35,9 @@ resources:
   limits:
     cpu: 100m
     memory: 64Mi
+  requests:
+    cpu: 50m
+    memory: 32Mi
 
 nodeSelector: {}
 
