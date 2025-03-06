@@ -20,10 +20,6 @@ spec:
         {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-      {{- with .Values.imagePullSecret }}
-      imagePullSecrets:
-        - name: {{ . }}
-      {{- end }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
@@ -38,6 +34,10 @@ spec:
           env:
             {{- toYaml .Values.env | nindent 12 }}
           {{- end }}
+      {{- with .Values.imagePullSecret }}
+      imagePullSecrets:
+        - name: {{ . }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
