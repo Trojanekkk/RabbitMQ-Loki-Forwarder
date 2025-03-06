@@ -5,6 +5,8 @@ image:
   pullPolicy: IfNotPresent
   tag: ""
 
+imagePullSecrets: ""
+
 env:
   - name: FORWARDER_LOKI_HOST
     value: loki
