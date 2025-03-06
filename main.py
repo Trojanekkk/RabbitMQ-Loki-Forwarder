@@ -34,6 +34,9 @@ class Forwarder:
         )
         self.channel = connection.channel()
 
+        self.channel.queue_declare(queue=rabbit_event_queue, durable=True)
+        self.channel.basic_qos(prefetch_count=1)
+
         self.channel.basic_consume(
             queue=rabbit_event_queue, on_message_callback=self.callback
         )
